@@ -1,20 +1,24 @@
 /** Riccardo Rampon  - 1195597 */
-#include <string>
 #include <vector>
 #include <iostream>
-using namespace std;
+using std::ostream;
 
 class Model{
 	public:
-		Model(int id, string name, vector<int> c, int pr);
+		Model(int id, std::string name, std::vector<int> c, int pr);  //costruttore di parametri
+		Model(const Model& m);                                        //costruttore di copia
+		Model& operator=(const Model& m);                             //operatore assegnamento di copia
+		Model(Model&& m);                                             //costruttore di spostamento
+		Model& operator=(Model&& m);                                  //operatore assegnamento di spostamento
+		~Model();                                                     //distruttore
 		int getId() const;
+		std::string getName() const;
 		int getPrice() const;
-		string getName() const;
-		vector<int> getComponents() const;
+		std::vector<int> getComponents() const;
 	private:
 		int id;
-		string name;
-		vector<int> components;
+		std::string name;
+		std::vector<int> components;
 		int price;
 }; //Model
 
