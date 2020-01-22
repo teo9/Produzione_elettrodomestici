@@ -1,3 +1,4 @@
+/*Anna Camillo - 1188526 */
 #include "Componenti.h"
 
 using namespace std;
