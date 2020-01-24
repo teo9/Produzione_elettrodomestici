@@ -85,6 +85,7 @@ int Model::getPrice()const{ return price; }//getPrice
 /** getName() */
 std::string Model::getName()const{ return name; }//getName
 
+/** getComponents */
 std::vector<int> Model::getComponents()const{ return components; }//getComponents
 
 ostream& operator<<(ostream& os, const Model& m){
