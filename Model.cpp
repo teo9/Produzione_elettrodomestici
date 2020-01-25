@@ -1,13 +1,13 @@
-/** Riccardo Rampon  - 1195597 */     /** commenti da finire */
+/** Riccardo Rampon  - 1195597 */
 #include "Model.h"
 
 /** costruttore di parametri
- * @param
- * @param
- * @param
- * @param
+ * @param model_id identificativo del modello
+ * @param model_name nome del modello
+ * @param model_components vettore di componenti associati al modello $model_id
+ * @param model_pr prezzo del modello
  */
-Model::Model(int model_id, std::string model_name, std::vector<int> model_components, int model_pr) {
+Model::Model(int model_id, std::string model_name, std::vector<Pair<Componenti>> model_components, double model_pr) {
 	id= model_id;
 	name= model_name;
 	components= model_components;
@@ -15,7 +15,7 @@ Model::Model(int model_id, std::string model_name, std::vector<int> model_compon
 }//Model
 
 /** costruttore di copia
- * @param
+ * @param const-reference all'oggetto Model da copiare
  */
 Model::Model(const Model& m) {
 	id= m.id;
@@ -38,7 +38,7 @@ Model& Model::operator=(const Model& m){
 }//operator=
 
 /** costruttore di spostamento
- * @param i rvalue-reference di tipo Image
+ * @param m rvalue-reference di tipo Model
  */
 Model::Model(Model&& m){
 	id= m.id;
@@ -52,7 +52,7 @@ Model::Model(Model&& m){
 }//Model
 
 /** assegnamento di spostamento - overloading dell'operatore =
- * @param i rvalue-reference
+ * @param m rvalue-reference
  * @return self-reference
  */
 Model& Model::operator=(Model&& m) {
@@ -64,7 +64,7 @@ Model& Model::operator=(Model&& m) {
 	m.id= 0;
 	m.name= "";
 	m.price= 0;
-	m.components.clear();
+	m.components= vector<Pair<Componenti>>();
 	return *this;
 }//operator=
 
@@ -80,28 +80,22 @@ Model::~Model(){
 int Model::getId()const{ return id; }//getId
 
 /** getPrice() */
-int Model::getPrice()const{ return price; }//getPrice
+double Model::getPrice()const{ return price; }//getPrice
 
 /** getName() */
 std::string Model::getName()const{ return name; }//getName
 
-/** getComponents */
-std::vector<int> Model::getComponents()const{ return components; }//getComponents
+std::vector<Pair<Componenti>> Model::getComponents()const{ return components; }//getComponents
 
 ostream& operator<<(ostream& os, const Model& m){
 	os<<"id: ["<<m.getId()<<"]\nname: ["<<m.getName()<<"]\ncomponents: [";
-	for(unsigned int i=0; i<m.getComponents().size(); i++)
-		os<<(m.getComponents())[i]<<"-";
+	//errore - da sistemare
 	os<<"]\nprice: ["<<m.getPrice()<<"]";
 	return os;
 }//operator<<
 
 int main(){
-	std::vector<int> c;
-	c.push_back(10);
-	c.push_back(20);
-	c.push_back(30);
-	c.push_back(40);
+	vector<Pair<Componenti>> c;
 	Model m{1, "frigo", c, 80};
 	std::cout<<m;
 	return 0;

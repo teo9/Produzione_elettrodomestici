@@ -1,6 +1,6 @@
 /** Riccardo Rampon - 1195597 */
 
-template<typename T, int Q>
+template<class T, typename Q = int>
 class Pair{
 	public:
 		Pair(T tClass, int tQuantity);
@@ -9,7 +9,7 @@ class Pair{
 		void setQuantity(int nQ);
 		bool operator==(const Pair<T,Q>& pair) const;
 		bool operator!=(const Pair<T,Q>& pair) const;
-		Pair<T,Q>& operator=(const Pair<T,Q>& pair);
+		//Pair<T,Q>& operator=(const Pair<T,Q>& pair);
 
 	private:
 		T tClass;
