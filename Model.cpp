@@ -77,15 +77,34 @@ Model::~Model(){
 }//~Model
 
 /** getId() */
-int Model::getId()const{ return id; }//getId
+int Model::getId()const{
+	return id;
+}//getId
 
 /** getPrice() */
-double Model::getPrice()const{ return price; }//getPrice
+double Model::getPrice()const{
+	return price;
+}//getPrice
 
 /** getName() */
-std::string Model::getName()const{ return name; }//getName
+std::string Model::getName()const{
+	return name;
+}//getName
 
-std::vector<Pair<Componenti>> Model::getComponents()const{ return components; }//getComponents
+/** getComponents() */
+std::vector<Pair<Componenti>> Model::getComponents()const{
+	return components;
+}//getComponents
+
+/** getIsBuilt() */
+bool Model::getBuild() const{
+	return isBuild;
+}//getIsBuilt
+
+/** setIsBuilt() */
+bool Model::modelBuilt(){
+	isBuild= true;
+}//getIsBuilt
 
 ostream& operator<<(ostream& os, const Model& m){
 	os<<"id: ["<<m.getId()<<"]\nname: ["<<m.getName()<<"]\ncomponents: [";
@@ -93,10 +112,3 @@ ostream& operator<<(ostream& os, const Model& m){
 	os<<"]\nprice: ["<<m.getPrice()<<"]";
 	return os;
 }//operator<<
-
-int main(){
-	vector<Pair<Componenti>> c;
-	Model m{1, "frigo", c, 80};
-	std::cout<<m;
-	return 0;
-}
