@@ -5,27 +5,27 @@
 
 using namespace std;
 
-class ordini {
+class Order{
 public:
-	ordini();							//costruttore di default
-	ordini(int t, int k, int n);					//costruttore di parametri
-	ordini(const ordini& ord);					//costruttore di copia
-	ordini(ordini&& ord);						//costruttore di spostamento
+	Order();							//costruttore di default
+	Order(int t, int k, int n);					//costruttore di parametri
+	Order(const ordini& ord);					//costruttore di copia
+	Order(ordini&& ord);						//costruttore di spostamento
 	//ordini(string s);						costruttore per il load del file ordini.dat
-	~ordini();							//distruttore
+	~Order();							//distruttore
 
-	ordini& operator=(const ordini& ord);				//operatore = per costruttore di copia
-	ordini& operator=(ordini&& ord);				//operatore = per costruttore di spostamento
+	Order& operator=(const Order& ord);				//operatore = per costruttore di copia
+	Order& operator=(Order&& ord);				//operatore = per costruttore di spostamento
 
 	int getTime() const;						//funzioni get
 	int getId() const;
-	int getQuantity() const;		
+	int getQuantity() const;
 
 private:
 	int time;
 	int id;
-	int quantity;							
+	int quantity;
 
 };
 
-ostream& operator<<(ostream os,const ordini& ord);			//overload operatore <<
+ostream& operator<<(ostream os,const Order& ord);			//overload operatore <<

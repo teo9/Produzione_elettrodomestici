@@ -1,29 +1,29 @@
 //Alberto Cappelletto 1196055
 
 #include<iostream>
-#include"ordini.h"
+#include"Order.h"
 
-using namespace std;	
+using namespace std;
 
-ordini::ordini() {					//costruttore di default
+Order::Order() {					//costruttore di default
 	time = 0;
 	id = 0;
 	quantity = 0;
 }
-ordini::ordini(int t,int k,int n) {			//costruttore di parametri
+Order::Order(int t,int k,int n) {			//costruttore di parametri
 	time = t;
 	id = k;
 	quantity = n;
 }
-/*ordini::ordini(string s) {				//costruttore per il load del file
+/*Order::Order(string s) {				//costruttore per il load del file
 	//load file
 }*/
-ordini::ordini(const ordini& ord) {			//costruttore di copia
+Order::Order(const Order& ord) {			//costruttore di copia
 	time = ord.time;
 	id = ord.id;
 	quantity = ord.quantity;
 }
-ordini::ordini(ordini&& ord) {				//costruttore di spostamento
+Order::Order(Order&& ord) {				//costruttore di spostamento
 	time = ord.time;
 	id = ord.id;
 	quantity = ord.quantity;
@@ -31,24 +31,24 @@ ordini::ordini(ordini&& ord) {				//costruttore di spostamento
 	ord.id = 0;
 	ord.quantity = 0;
 }
-ordini::~ordini() {					//distruttore
+Order::~Order() {					//distruttore
 	time = 0;
 	id = 0;
 	quantity = 0;
 }
-//metodi get della classe ordini
-int ordini::getId()const { return id; }
-int ordini::getTime()const { return time; }
-int ordini::getQuantity()const { return quantity; }
+//metodi get della classe Order
+int Order::getId()const { return id; }
+int Order::getTime()const { return time; }
+int Order::getQuantity()const { return quantity; }
 //overload operatore = per copia
-ordini& ordini::operator=(const ordini& ord) {
+Order& Order::operator=(const Order& ord) {
 	time = ord.time;
 	id = ord.id;
 	quantity = ord.quantity;
 	return *this;
 }
 //overload operatore = per spostamento
-ordini& ordini::operator=(ordini&& ord) {
+Order& Order::operator=(Order&& ord) {
 	time = ord.time;
 	id = ord.id;
 	quantity = ord.quantity;
@@ -58,16 +58,6 @@ ordini& ordini::operator=(ordini&& ord) {
 	return *this;
 }
 //overload operatore <<
-ostream& operator<<(ostream os,const ordini ord) {
+ostream& operator<<(ostream os,const Order ord) {
 	os << "time= [" << ord.getTime() << "]\n" << "id= [" << ord.getId() << "]\n" << "quantity= [" << ord.getQuantity() << "]\n";
 }
-
-
-
-
-
-
-
-
-
-
