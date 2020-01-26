@@ -9,8 +9,8 @@ class Order{
 public:
 	Order();							//costruttore di default
 	Order(int t, int k, int n);					//costruttore di parametri
-	Order(const ordini& ord);					//costruttore di copia
-	Order(ordini&& ord);						//costruttore di spostamento
+	Order(const Order& ord);					//costruttore di copia
+	Order(Order&& ord);						//costruttore di spostamento
 	//ordini(string s);						costruttore per il load del file ordini.dat
 	~Order();							//distruttore
 

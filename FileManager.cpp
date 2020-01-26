@@ -4,39 +4,40 @@
 using namespace std;
 
 FileManager::FileManager() {
-	
+
 	//lettura dei modelli dell'ordine da models.dat
 	ifstream file("dats/models/models.dat", ios::in);
-	if (!file.is_open())
-		throw OpenFileError();
+	//if (!file.is_open())
+		//
 
 	int idModel;
-	while (file >> model)
-		modelsAvailable.push_back(model);
+	while (file >> idModel)
+		list_idModels.push_back(idModel);
 	file.close();
 
-	//lettura dei modelli dell'ordine da models.dat
+	//lettura dei componenti del modello da components_info.dat
 	file.open("dats/components_info.dat", ios::in);
-	if (!file.is_open())
-		throw OpenFileError();
+	/*if (!file.is_open())
+		throw OpenFileError{};*/
 
-	string cId, cName;
-	int cDeliveryTime;
-	double p1, p2, p3;
-	//Component c; non ha il costruttore di default -> chiedigli
-	while (file >> cId >> cName >> cDeliveryTime >> p1 >> p2 >> p3) {
-		Component c{ cId,cName,cDeliveryTime,{p1,p2,p3} };
-		allComponents.push_back(c);
+	int c_id, c_time;
+	string c_name;
+	Prezzo p;
+
+	//aggiungo i componenti nel vettore 'components'
+	while (file >> c_id >> c_name >> c_time >> p.a >> p.b >> p.c) {
+		Components comp{c_id, c_name, c_time, p.a, p.b, p.c};
+		components.push_back(comp);
 	}
 	file.close();
 
-	//Creating models (imp after the reading of components)
-	for (int i = 0; i < modelsAvailable.size(); i++) {
-		models.push_back(getModel(modelsAvailable[i]));
+	//aggiungo i modelli nel vettore 'models'
+	for (int i = 0; i < list_idModels.size(); i++) {
+		models.push_back(getModel(list_idModels[i]));
 	}
 }
 
-double FileManager::getAmmount() const {
+/*double FileManager::getAmmount() const {
 	double ammount;
 
 	ifstream file("resources/orders.dat");
@@ -46,23 +47,23 @@ double FileManager::getAmmount() const {
 	file.close();
 
 	return ammount;
-}
+}*/
 
-std::vector<Order> FileManager::getOrders(int aMonth) {
-	vector<Order> vector;
-	ifstream file("resources/orders.dat", ios::in);
+/*std::vector<ordini> FileManager::getOrders(int month) {
+	vector<ordini> order;
+	ifstream file("dats/orders.dat", ios::in);
 	if (!file.is_open())
-		throw ErrorInFileReading();
+		throw OpenFileError();
 
-	string unnecessaryLine;
+	/*string unnecessaryLine;
 	// line of the ammount in bank, non needed
 	std::getline(file, unnecessaryLine);
 
 	// lines of orders that are already readed
 	for (int i = 0; i < ordersReaded; i++)
-		std::getline(file, unnecessaryLine);
+		std::getline(file, unnecessaryLine);*/
 
-	int month, quantity;
+	int mm, quantity;
 	string idModel;
 	bool hasNext = true;
 	while (hasNext) {
@@ -87,10 +88,9 @@ std::vector<Order> FileManager::getOrders(int aMonth) {
 	}
 	file.close();
 	return vector;
-}
+}*/
 
-//restituisco volutamente una copia (errore in spostamento (se hai tempo risolvi)
-Model FileManager::getModel(string idModel) const {
+/*Model FileManager::getModel(string idModel) const {
 	string modelId, nome;
 	double prezzo;
 	ifstream file("resources/models/" + idModel, ios::in);
@@ -109,9 +109,9 @@ Model FileManager::getModel(string idModel) const {
 	Model m(modelId, nome, prezzo, components);
 	file.close();
 	return m;
-}
+}*/
 
-Component FileManager::getComponent(string idComponent) const {
+/*Component FileManager::getComponent(string idComponent) const {
 	bool found = false;
 	int i;
 	for (i = 0; i < allComponents.size() && !found; ++i) {
@@ -123,4 +123,4 @@ Component FileManager::getComponent(string idComponent) const {
 	else {
 		return allComponents[((__int64)i - 1)];
 	}
-}
+}*/

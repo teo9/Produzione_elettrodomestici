@@ -7,7 +7,7 @@ class FileManager{
 		class ReadFileError{};
 		FileManager();
 		double getAmmount() const;
-		vector<ordini> getOrders(int mm);
+		vector<Order> getOrders(int mm);
 	private:
 		vector<Model> orderModels;
 		vector<Components> modelComponents;
