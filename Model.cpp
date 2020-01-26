@@ -6,12 +6,14 @@
  * @param model_name nome del modello
  * @param model_components vettore di componenti associati al modello $model_id
  * @param model_pr prezzo del modello
+ * @param model_built indicazione se il modello è stato costruito
  */
 Model::Model(int model_id, std::string model_name, std::vector<Pair<Components>> model_components, double model_pr) {
 	id= model_id;
 	name= model_name;
 	components= model_components;
 	price= model_pr;
+	isBuild= model_built;
 }//Model
 
 /** costruttore di copia
@@ -20,8 +22,9 @@ Model::Model(int model_id, std::string model_name, std::vector<Pair<Components>>
 Model::Model(const Model& m) {
 	id= m.id;
 	name= m.name;
-	price= m.price;
 	components= m.components;
+	price= m.price;
+	isBuild= m.isBuild;
 }//Model
 
 /** assegnamento di copia - overloading dell'operatore =
@@ -34,6 +37,7 @@ Model& Model::operator=(const Model& m){
 	name= m.name;
 	price= m.price;
 	components= m.components;
+	isBuild= m.isBuild;
 	return *this;
 }//operator=
 
@@ -44,11 +48,13 @@ Model::Model(Model&& m){
 	id= m.id;
 	name= m.name;
 	price= m.price;
+	isBuild= m.isBuild;
 	components= m.components;
 	m.id= 0;
 	m.name= "";
 	m.price= 0;
 	m.components.clear();
+	m.isBuild= false;
 }//Model
 
 /** assegnamento di spostamento - overloading dell'operatore =
@@ -60,6 +66,7 @@ Model& Model::operator=(Model&& m) {
 	id= m.id;
 	name= m.name;
 	price= m.price;
+	isBuild= m.isBuild;
 	components= m.components;
 	m.id= 0;
 	m.name= "";
@@ -74,20 +81,21 @@ Model::~Model(){
 	name= "";
 	price= 0;
 	components.clear();
+	isBuild= false;
 }//~Model
 
 /** getId() */
-int Model::getId()const{
+int Model::getId() const{
 	return id;
 }//getId
 
 /** getPrice() */
-double Model::getPrice()const{
+double Model::getPrice() const{
 	return price;
 }//getPrice
 
 /** getName() */
-std::string Model::getName()const{
+std::string Model::getName() const{
 	return name;
 }//getName
 
@@ -102,13 +110,6 @@ bool Model::getBuild() const{
 }//getIsBuilt
 
 /** setIsBuilt() */
-bool Model::modelBuilt(){
+void Model::modelBuilt(){
 	isBuild= true;
 }//getIsBuilt
-
-ostream& operator<<(ostream& os, const Model& m){
-	os<<"id: ["<<m.getId()<<"]\nname: ["<<m.getName()<<"]\ncomponents: [";
-	//errore - da sistemare
-	os<<"]\nprice: ["<<m.getPrice()<<"]";
-	return os;
-}//operator<<
