@@ -7,9 +7,7 @@ using std::ostream;
 
 class Model{
 	public:
-		Model(int id, std::string name, std::vector<Pair<Components>> c, double pr, bool blt);  //costruttore di parametri
-		Model(const Model& m);                                        			      							//costruttore di copia
-		Model(int id, std::string name, std::vector<Pair<Componenti>> c, double pr, bool blt);  		//costruttore di parametri
+		Model(int id, std::string name, std::vector<Pair<Components>> c, double pr);          //costruttore di parametri
 		Model(const Model& m);                                        			      					//costruttore di copia
 		Model& operator=(const Model& m);                                             					//operatore assegnamento di copia
 		Model(Model&& m);                                                             					//costruttore di spostamento
