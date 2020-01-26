@@ -1,13 +1,13 @@
 /** Riccardo Rampon  - 1195597 */
 #include "Pair.h"
-#include "Componenti.h"
+#include "Components.h"
 #include <vector>
 #include <iostream>
 using std::ostream;
 
 class Model{
 	public:
-		Model(int id, std::string name, std::vector<Pair<Componenti>> c, double pr, bool blt);  //costruttore di parametri
+		Model(int id, std::string name, std::vector<Pair<Components>> c, double pr, bool blt);  //costruttore di parametri
 		Model(const Model& m);                                        			      							//costruttore di copia
 		Model& operator=(const Model& m);                                             					//operatore assegnamento di copia
 		Model(Model&& m);                                                             					//costruttore di spostamento
@@ -17,13 +17,13 @@ class Model{
 		int getId() const;
 		std::string getName() const;
 		double getPrice() const;
-		std::vector<Pair<Componenti>> getComponents() const;
+		std::vector<Pair<Components>> getComponents() const;
 		bool getBuild() const;
 		void modelBuilt();
 	private:
 		int id;
 		std::string name;
-		std::vector<Pair<Componenti>> components;
+		std::vector<Pair<Components>> components;
 		double price;
 		bool isBuild;
 }; //Model

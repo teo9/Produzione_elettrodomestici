@@ -7,7 +7,7 @@
  * @param model_components vettore di componenti associati al modello $model_id
  * @param model_pr prezzo del modello
  */
-Model::Model(int model_id, std::string model_name, std::vector<Pair<Componenti>> model_components, double model_pr) {
+Model::Model(int model_id, std::string model_name, std::vector<Pair<Components>> model_components, double model_pr) {
 	id= model_id;
 	name= model_name;
 	components= model_components;
@@ -64,7 +64,7 @@ Model& Model::operator=(Model&& m) {
 	m.id= 0;
 	m.name= "";
 	m.price= 0;
-	m.components= vector<Pair<Componenti>>();
+	m.components= vector<Pair<Components>>();
 	return *this;
 }//operator=
 
@@ -92,7 +92,7 @@ std::string Model::getName()const{
 }//getName
 
 /** getComponents() */
-std::vector<Pair<Componenti>> Model::getComponents()const{
+std::vector<Pair<Components>> Model::getComponents()const{
 	return components;
 }//getComponents
 
