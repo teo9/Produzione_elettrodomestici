@@ -1,5 +1,18 @@
-/** classe che legge i dati dai file e li interpreta */
+dunque i componenti necessari per costruirlo*/
 
-/** leggiamo per ogni mese gli ordini che ci sono, prendiamo i modelli e
-    dunque i componenti necessari per costruirlo
-*/
+#include "Model.h"
+#include "Order.h"
+#include <vector>
+using std::vector;
+
+class FileManager{
+	public:
+		FileManager();
+		vector<ordini> getOrders(int mm);
+	private:
+		vector<Model> orderModels;
+		vector<Components> modelComponents;
+
+
+
+};
