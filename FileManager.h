@@ -1,18 +1,16 @@
-dunque i componenti necessari per costruirlo*/
-
 #include "Model.h"
 #include "Order.h"
-#include <vector>
 using std::vector;
 
 class FileManager{
 	public:
+		class ReadFileError{};
 		FileManager();
+		double getAmmount() const;
 		vector<ordini> getOrders(int mm);
 	private:
 		vector<Model> orderModels;
 		vector<Components> modelComponents;
-
-
-
+		Model getModel(int idModel) const;
+		Components getComponent(int idComponent) const;
 };
