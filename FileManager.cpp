@@ -1,126 +1,54 @@
 #include "FileManager.h"
 #include <fstream>
 
-using namespace std;
+FileManager::FileManager(){
+	//lettura del modelli dal file models.dat
+	string name_models= "";
+	ifstream file_models("dats/models.dat", ios::in);
+	if(!file_models.is_open())
+		throw FileManager::OpenFileError{};
+	while(file_models>>name_models)
+		models_InFile.push_back(name_models);
+	file_models.close();
 
-FileManager::FileManager() {
+	//dai vari file modelli letti, inserisco i
 
-	//lettura dei modelli dell'ordine da models.dat
-	ifstream file("dats/models/models.dat", ios::in);
-	//if (!file.is_open())
-		//
+}//FileManager
 
-	int idModel;
-	while (file >> idModel)
-		list_idModels.push_back(idModel);
-	file.close();
+/** ritorno il modello completo dei componenti partendo dai file letti */
+Model FileManager::getModel(string model_fileName){
+	ifstream file_models("dats/models/" + model_fileName, ios::in);
+	if(!file_models.is_open())
+		throw FileManager::OpenFileError{};
 
-	//lettura dei componenti del modello da components_info.dat
-	file.open("dats/components_info.dat", ios::in);
-	/*if (!file.is_open())
-		throw OpenFileError{};*/
+	//variabili per la lettura delle informazioni relative al modello $model_fileName.dat
+	int model_id;
+	double model_pr;
+	string model_name;
 
-	int c_id, c_time;
-	string c_name;
-	Prezzo p;
+	//leggo la prima linea del file per l'id, il nome e il prezzo del modello
+	file_models >> model_id >> model_name >> model_pr;
 
-	//aggiungo i componenti nel vettore 'components'
-	while (file >> c_id >> c_name >> c_time >> p.a >> p.b >> p.c) {
-		Components comp{c_id, c_name, c_time, p.a, p.b, p.c};
-		components.push_back(comp);
-	}
-	file.close();
+	//variabili per la lettura delle informazioni relative ai componenti del modello
+	/*int comp_id, comp_quantity;
+	string comp_name;
 
-	//aggiungo i modelli nel vettore 'models'
-	for (int i = 0; i < list_idModels.size(); i++) {
-		models.push_back(getModel(list_idModels[i]));
-	}
-}
 
-/*double FileManager::getAmmount() const {
-	double ammount;
-
-	ifstream file("resources/orders.dat");
-	if (!file.is_open())
-		throw ErrorInFileReading();
-	file >> ammount;
-	file.close();
-
-	return ammount;
-}*/
-
-/*std::vector<ordini> FileManager::getOrders(int month) {
-	vector<ordini> order;
-	ifstream file("dats/orders.dat", ios::in);
-	if (!file.is_open())
-		throw OpenFileError();
-
-	/*string unnecessaryLine;
-	// line of the ammount in bank, non needed
-	std::getline(file, unnecessaryLine);
-
-	// lines of orders that are already readed
-	for (int i = 0; i < ordersReaded; i++)
-		std::getline(file, unnecessaryLine);*/
-
-	int mm, quantity;
-	string idModel;
-	bool hasNext = true;
-	while (hasNext) {
-		file >> month >> idModel >> quantity;
-		// Finish if we havent other ordes of this month or if we reached the eof
-		if (month > aMonth || file.eof())
-			hasNext = false;
-		else if (month == aMonth) {
-			int indexOfModel;
-			bool found = false;
-			for (indexOfModel = 0; indexOfModel < modelsAvailable.size() && !found; indexOfModel++) {
-				if (modelsAvailable[indexOfModel] == (idModel+".dat"))
-					found = true;
-			}
-			indexOfModel--;
-			if (!found)
-				throw UnknownModel();
-			// cosa stranissima viene invocato sia il costruttore di spostamento che di copia!!
-			vector.push_back(Order(ordersReaded,month, Pair<Model>{models[indexOfModel], quantity}));
-			ordersReaded++;
-		}
-	}
-	file.close();
-	return vector;
-}*/
-
-/*Model FileManager::getModel(string idModel) const {
-	string modelId, nome;
-	double prezzo;
-	ifstream file("resources/models/" + idModel, ios::in);
-	if (!file.is_open())
-		throw ErrorInFileReading();
-	//Reading first line = general info about model
-	file >> modelId >> nome >> prezzo;
-
-	//Reading remaing line = info about components
-	string componentId, componentName;
-	int quantity;
-	vector<Pair<Component>> components;
-	while (file >> componentId >> componentName >> quantity) {
-		components.push_back(Pair<Component>(getComponent(componentId), quantity));
-	}
-	Model m(modelId, nome, prezzo, components);
-	file.close();
+	//leggo le restanti linee per l'id, il nome e la quantità dei componenti
+	while(file_models >> comp_id >> comp_name >> comp_quantity)
+		//model_components.push_back(Pair<Components>(getComponent(comp_id)), comp_quantity);
+	file_models.close();*/
+	vector<Components> model_components;
+	Model m(model_id, model_name, model_components, model_pr);
 	return m;
-}*/
+}//getModel
 
-/*Component FileManager::getComponent(string idComponent) const {
-	bool found = false;
-	int i;
-	for (i = 0; i < allComponents.size() && !found; ++i) {
-		if (allComponents[i].id() == idComponent)
-			found = true;
-	}
-	if (!found)
-		throw UnknownComponent();
-	else {
-		return allComponents[((__int64)i - 1)];
-	}
-}*/
+
+
+
+int main(void){
+	FileManager fm();
+
+
+	return 0;
+}//main

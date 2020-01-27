@@ -18,14 +18,14 @@ Components::Components(string nome_)
     {
 			string* arr = new string[6];
 			arr=divide(nome_);
-            
+
             id = stoi(arr[0]);
             nome = arr[1];
             tempo = stoi(arr[2]);
             p.a = stoi(arr[3]);
             p.b = stoi(arr[4]);
             p.c = stoi(arr[5]);
-            
+
 			delete[] arr;
     }
 
@@ -33,17 +33,17 @@ Components::Components(const Components& c)                                     
 {
     id = c.id;
     nome = c.nome;
-    tempo = c.tempo; 
+    tempo = c.tempo;
     p.a = c.p.a;
     p.b = c.p.b;
     p.c = c.p.c;
 }
 
-Components& Components::operator =(const Components& c)                                         //assegnamento di copia    
+Components& Components::operator =(const Components& c)                                         //assegnamento di copia
 {
     id = c.id;
     nome = c.nome;
-    tempo = c.tempo;    
+    tempo = c.tempo;
     p.a = c.p.a;
     p.b = c.p.b;
     p.c = c.p.c;
@@ -54,7 +54,7 @@ Components::Components(Components&& c)                                          
 {
     id = c.id;
     nome = c.nome;
-    tempo = c.tempo; 
+    tempo = c.tempo;
     p.a = c.p.a;
     p.b = c.p.b;
     p.c = c.p.c;
@@ -70,7 +70,7 @@ Components& Components::operator =(Components&& c)                              
 {
     id = c.id;
     nome = c.nome;
-    tempo = c.tempo; 
+    tempo = c.tempo;
     p.a = c.p.a;
     p.b = c.p.b;
     p.c = c.p.c;
@@ -106,7 +106,7 @@ int Components::GetPrezzo(int n)
         return p.b;
     else if(n>50)
         return p.c;
-    else 
+    else
         return 0;
 }
 
@@ -132,11 +132,11 @@ vector<Components> load(string NomeFile)                    //carica l'intero fi
                 Components b (s);
                 componenti.push_back(b);
             }
-    else 
+    else
         cout << "file non leggibile";
         iff.close();
         return componenti;
-            
+
 }
 
 string* divide(string s)                              //divide le stringhe caricate
@@ -156,7 +156,5 @@ string* divide(string s)                              //divide le stringhe caric
         else
             a+=s.at(i);
     }
-        return arr; 
+        return arr;
 }
-
-

@@ -8,7 +8,7 @@
  * @param model_pr prezzo del modello
  * @param model_built indicazione se il modello e` stato costruito
  */
-Model::Model(int model_id, std::string model_name, std::vector<Pair<Components>> model_components, double model_pr) {
+Model::Model(int model_id, std::string model_name, std::vector<Components> model_components, double model_pr) {
 	id= model_id;
 	name= model_name;
 	components= model_components;
@@ -72,7 +72,7 @@ Model& Model::operator=(Model&& m) {
 	m.name= "";
 	m.price= 0;
 	m.isBuild= false;
-	m.components= vector<Pair<Components>>();
+	m.components.clear();
 	return *this;
 }//operator=
 
@@ -101,7 +101,7 @@ std::string Model::getName() const{
 }//getName
 
 /** getComponents() */
-std::vector<Pair<Components>> Model::getComponents() const{
+std::vector<Components> Model::getComponents() const{
 	return components;
 }//getComponents
 
