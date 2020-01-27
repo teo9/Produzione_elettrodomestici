@@ -76,4 +76,22 @@ void FileManager::carica_comp() {
 		componenti.close();
 	}
 }
+void FileManager::carica_ord() {
+	ifstream orders("orders.dat");
+	if (orders.is_open()) {
+		int c;
+		orders >> c;
+		cassa = c;
+		while (orders.good()) {
+			int time;
+			orders >> time;
+			int id;
+			orders >> id;
+			int quantity;
+			orders >> quantity;
+			arrivi.push_back(ordini(time,id,quantity));
+		}
+		orders.close();
+	}
+}
 
