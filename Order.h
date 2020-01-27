@@ -2,6 +2,7 @@
 //Alberto Cappelletto 1196055
 #include<iostream>
 #include<string>
+#include"Model.h"
 
 using namespace std;
 
@@ -20,11 +21,13 @@ public:
 	int getTime() const;						//funzioni get
 	int getId() const;
 	int getQuantity() const;
+	Model getModel() const;
 
 private:
 	int time;
 	int id;
 	int quantity;
+	Model mod;
 
 };
 
