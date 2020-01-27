@@ -52,3 +52,28 @@ int main(void){
 
 	return 0;
 }//main
+
+
+
+void FileManager::carica_comp() {
+	ifstream componenti("components_info.dat");
+	if (componenti.is_open()) {
+		while (componenti.good()) {
+			int id;
+			componenti >> id;
+			componenti.clear();
+			string s;
+			componenti >> s;
+			int time;
+			componenti >> time;
+			double prezzi[3];
+			for (int i = 0; i < 3; i++) {
+				componenti >> prezzi[i];
+			}
+			components c(id, s, time, prezzi[0], prezzi[1], prezzi[2]);
+			comp_arrivati.push_back(c);
+		}
+		componenti.close();
+	}
+}
+
