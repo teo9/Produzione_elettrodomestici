@@ -9,6 +9,7 @@ class FileManager{
 		FileManager();
 		Model getModel(string model_fileName);
 		void carica_comp();
+		void carica_ord();
 
 	private:
 		vector<string> models_InFile;
