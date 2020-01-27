@@ -1,16 +1,16 @@
+#include <vector>
 #include "Model.h"
-#include "Order.h"
-using std::vector;
+
+using namespace std;
 
 class FileManager{
 	public:
-		class ReadFileError{};
+		class OpenFileError{};
 		FileManager();
-		double getAmmount() const;
-		vector<Order> getOrders(int mm);
+		Model getModel(string model_fileName);
+		void carica_comp();
+		void carica_ord();
+
 	private:
-		vector<Model> orderModels;
-		vector<Components> modelComponents;
-		Model getModel(int idModel) const;
-		Components getComponent(int idComponent) const;
+		vector<string> models_InFile;
 };
