@@ -8,6 +8,7 @@ class FileManager{
 		class OpenFileError{};
 		FileManager();
 		Model getModel(string model_fileName);
+		void carica_comp();
 
 	private:
 		vector<string> models_InFile;
