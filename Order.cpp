@@ -2,6 +2,7 @@
 
 #include<iostream>
 #include"Order.h"
+#include"model.h"
 
 using namespace std;
 
@@ -40,6 +41,8 @@ Order::~Order() {					//distruttore
 int Order::getId()const { return id; }
 int Order::getTime()const { return time; }
 int Order::getQuantity()const { return quantity; }
+model Order::getModel()const{return model;}
+
 //overload operatore = per copia
 Order& Order::operator=(const Order& ord) {
 	time = ord.time;
