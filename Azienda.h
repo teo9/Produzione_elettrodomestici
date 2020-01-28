@@ -28,5 +28,8 @@ private:
 	vector <Components> comp_info;
 	vector<Components>comp_arrivati;
 	vector <Model> m;
+	Vector <Model> mod_catalogo;
 	int cassa;
+	int mese;
+	int tot_ordini;
 };
