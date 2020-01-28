@@ -94,7 +94,3 @@ void FileManager::carica_ord() {
 		orders.close();
 	}
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> c4702f8af52351beacd2a05c51cc1b5362396011
