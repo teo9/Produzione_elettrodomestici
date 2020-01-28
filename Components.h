@@ -24,10 +24,10 @@ class Components
         Components(int id, string nome, int tempo, Prezzi p);
         Components(string nome);
         Components(int id, string nome, int tempo, int a, int b, int c);
-        int GetId();
-        string GetNome();
-        int GetTempo();
-        int GetPrezzo(int n);
+        int GetId() const;
+        string GetNome() const;
+        int GetTempo() const;
+        int GetPrezzo(int n) const;
         Components(const Components& c);                                            //costruttore di copia
         Components& operator =(const Components& c);                                //assegnamento di copia
         Components(Components&& c);                                                 //costruttore di spostamento

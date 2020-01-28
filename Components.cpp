@@ -83,22 +83,22 @@ Components& Components::operator =(Components&& c)                              
     return *this;
 }
 
-int Components::GetId()
+int Components::GetId() const
 {
     return id;
 }
 
-string Components::GetNome()
+string Components::GetNome() const
 {
     return nome;
 }
 
-int Components::GetTempo()
+int Components::GetTempo() const
 {
     return tempo;
 }
 
-int Components::GetPrezzo(int n)
+int Components::GetPrezzo(int n) const
 {
     if(n>0 && n<=10)
         return p.a;
@@ -120,14 +120,14 @@ vector<Components> load(string NomeFile)                    //carica l'intero fi
 {
     string s = "";
     vector<Components> componenti {};
-	//ifstream comp(NomeFile);
+	
     fstream iff;
     iff.open(NomeFile);
-    //comp.open("r");
+    
     if(iff.is_open())
         while(!iff.eof())
             {
-                //getline(comp, s);
+                
                 iff >> s;
                 Components b (s);
                 componenti.push_back(b);
