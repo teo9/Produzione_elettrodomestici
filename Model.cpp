@@ -110,11 +110,19 @@ bool Model::getBuild() const{
 	return isBuild;
 }//getIsBuilt
 
-/** setIsBuilt() */
-void Model::modelBuilt(){
+/** setModelBuilt() */
+void Model::setModelBuilt(){
 	isBuild= true;
 }//getIsBuilt
 
-int main(void){
-	return 0;
-}
+/** operator<<
+ * @param os oggetto ti tipo ostream
+ * @param m oggetto di tipo Model
+ * @return stampa su video dello stato dell'oggetto
+*/
+ostream& operator<<(ostream os, const Model& m) {
+	os<<"Id: "<<m.getId()<<"Name: "<<m.getName()<<"Price: "<<m.getPrice();
+	for(int i=0; i<m.getComponents().size(); i++)
+		os<<"Component"<<i<<": "<<m.getComponents().at(i);
+	return os;
+}//operator<<
