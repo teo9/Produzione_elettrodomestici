@@ -1,7 +1,9 @@
 /*Anna Camillo - 1188526*/
-#include <ostream>
-#include <fstream>
+#ifndef COMPONENTS_H
+#define COMPONENTS_H
+
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -39,3 +41,5 @@ class Components
     ostream& operator<< ( ostream& os , Components& c );                            //overloading operator <<
     vector<Components> load(string NomeFile);                                       //metodo per caricare leggere file .dat
     string* divide(string s);                                                       //metodo per dividere la stringa letta e caricarla in un array
+
+    #endif
