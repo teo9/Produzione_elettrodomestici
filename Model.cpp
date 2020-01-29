@@ -20,11 +20,10 @@ Model::Model(int model_id, std::string model_name, std::vector<Components> model
  * @param nome_ nome file del modello
 */
 Model::Model(string nome_){
-	string* arr = new string[3];
+	string* arr = new string[2];
 	arr = divide(nome_);
-	time = stoi(arr[0]);
-	id= stoi(arr[1]);
-	quantity = stoi(arr[2]);
+	id= stoi(arr[0]);
+	name= stoi(arr[1]);
 	delete[] arr;
 }//Model
 
@@ -132,14 +131,16 @@ void Model::setModelBuilt(){
  * @param m oggetto di tipo Model
  * @return stampa su video dello stato dell'oggetto
 */
-ostream& operator<<(ostream os, const Model& m) {
+ostream& operator<<(ostream& os, const Model& m) {
 	os<<"Id: "<<m.getId()<<"Name: "<<m.getName()<<"Price: "<<m.getPrice();
 	for(int i=0; i<m.getComponents().size(); i++)
 		os<<"Component"<<i<<": "<<m.getComponents().at(i);
 	return os;
 }//operator<<
 
-
+/** divide()
+ * @param s linea del file da cui leggere i dati
+*/
 string* divide(string s){
 	string a = "";
 	int j = 0;
