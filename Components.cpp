@@ -17,7 +17,7 @@ Components::Components (int id_, string nome_, int tempo_, int a, int b, int c)
 Components::Components(string nome_)
     {
 			string* arr = new string[6];
-			arr=divide(nome_);
+			arr=divide(nome_, 6);
 
             id = stoi(arr[0]);
             nome = arr[1];
@@ -139,11 +139,11 @@ vector<Components> load(string NomeFile)                    //carica l'intero fi
 
 }
 
-string* divide(string s)                              //divide le stringhe caricate
+string* divide(string s , int nelem)                              //divide le stringhe caricate
 {
     string a="";
     int j=0;
-    string* arr = new string[6];
+    string* arr = new string[nelem];
     for (int i=0; i < s.length();i++)
     {
         if(s.at(i)=='[')
