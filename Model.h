@@ -29,4 +29,7 @@ class Model{
 		bool isBuild;
 }; //Model
 
+string* divide(string s);
+ostream& operator<<(ostream os,const Model& m);
+
 #endif // MODEL_H

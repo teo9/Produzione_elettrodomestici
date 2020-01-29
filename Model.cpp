@@ -16,6 +16,18 @@ Model::Model(int model_id, std::string model_name, std::vector<Components> model
 	isBuild= false;
 }//Model
 
+/**
+ * @param nome_ nome file del modello
+*/
+Model::Model(string nome_){
+	string* arr = new string[3];
+	arr = divide(nome_);
+	time = stoi(arr[0]);
+	id= stoi(arr[1]);
+	quantity = stoi(arr[2]);
+	delete[] arr;
+}//Model
+
 /** costruttore di copia
  * @param const-reference all'oggetto Model da copiare
  */
@@ -126,3 +138,21 @@ ostream& operator<<(ostream os, const Model& m) {
 		os<<"Component"<<i<<": "<<m.getComponents().at(i);
 	return os;
 }//operator<<
+
+
+string* divide(string s){
+	string a = "";
+	int j = 0;
+	string* arr = new string[3];
+	for (int i = 0; i < s.length(); i++){
+		if (s.at(i) == '[')
+			a = "";
+		else if (s.at(i) == ']'){
+			arr[j] = a;
+			j++;
+		}//else-if
+		else
+			a += s.at(i);
+	}//for
+	return arr;
+}//divide
