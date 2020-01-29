@@ -61,9 +61,9 @@ bool Ordine::operator<(const Ordine& o) {
 	return (time < o.time);
 }
 //overload operatore <<
-ostream& operator<<(ostream os,const Ordine ord) {
+ostream& operator<<(ostream &os,const Ordine &ord) {
 	os << "time= [" << ord.getTime() << "]\n" << "id= [" << ord.getId() << "]\n" << "quantity= [" << ord.getQuantity() << "]\n";
-	return &os;
+	return os;
 }
 Ordine::Ordine(string nome_)
 {
