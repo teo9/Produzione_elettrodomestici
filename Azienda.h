@@ -6,32 +6,6 @@
 
 using namespace std;
 
-class Ordine {
-public:
-
-	Ordine();										//costruttore di default
-	Ordine(int t, int k, int n);					//costruttore di parametri
-	Ordine(const Ordine& ord);						//costruttore di copia
-	Ordine(Ordine&& ord);							//costruttore di spostamento
-	~Ordine();										//distruttore
-
-	Ordine& operator=(const Ordine& ord);			//overloading operatore = per costruttore di copia
-	Ordine& operator=(Ordine&& ord);				//overloading operatore = per costruttore di spostamento
-	bool operator<(const Ordine& o);				//overloading operatore <
-
-	int getTime() const;									//funzioni get
-	int getId() const;
-	int getQuantity() const;
-
-private:
-	int time;
-	int id;
-	int quantity;							
-
-};
-
-ostream& operator<<(ostream os,const Ordine& ord);
-
 
 class Azienda {
 public:
@@ -82,58 +56,3 @@ private:
 	int tot_ordini;						//questo non so se è necessario 
 };
 
-class Components
-{
-private:
-	int id;
-	string nome;
-	int tempo;
-	vector<int> p={0,0,0};
-	int quantità;
-
-public:
-	Components();
-	Components(int q,string w,int e,int t, int y,int u,int o);
-	Components(int id, string nome, int tempo, int a, int b, int c);
-	int GetId() const;
-	string GetNome() const;
-	int GetTempo() const;
-	vector<int> GetPrezzi() const;
-	int GetPrezzo(int n) const;
-	Components(const Components& c);                                            //costruttore di copia
-	Components& operator =(const Components& c);                                //assegnamento di copia
-	Components(Components&& c);                                                 //costruttore di spostamento
-	Components& operator =(Components&& c);                                     //assegnamento di spostamento
-
-
-
-};
-ostream& operator<< (ostream& os, Components& c);                   //overloading operator <<
-//vector<Components> load(string NomeFile);//non penso serva        //metodo per caricare leggere file .dat
-//string* divide(string s);	           //neanche questo         //metodo per dividere la stringa letta e caricarla in un array
-
-
-
-class Model {
-public:
-	Model(int id,string name,vector<Components> c, double pr);          //costruttore di parametri
-	Model(const Model& m);                                        			      					//costruttore di copia
-	Model& operator=(const Model& m);                                             					//operatore assegnamento di copia
-	Model(Model&& m);                                                             					//costruttore di spostamento
-	Model& operator=(Model&& m);                                                  					//operatore assegnamento di spostamento
-	~Model();																						//distruttore
-	int getId() const;
-	string getName() const;
-	double getPrice() const;
-	vector<Components> getComponents() const;
-	bool getBuild() const;
-	void modelBuilt();
-private:
-	int id;
-	string name;
-	vector<Components> components;
-	double price;
-	bool isBuild;
-}; //Model
-
-ostream& operator<<(ostream& ost, const Model& m);
