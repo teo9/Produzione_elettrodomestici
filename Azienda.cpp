@@ -45,6 +45,39 @@ void Azienda::get_delivered_orders() {
 	//stampa id, nome, .... std::cout <<	
 }//get_delivered_orders*/
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int Azienda::acquista_componenti(Order ord){
+	vector<Components> comp_da_acquistare= ord.getModel().getComponents();
+	int prezzo= Components.GetPrezzo(comp_da_acquistare.size()); //prezzo totale per l'acquisto
+	
+	return prezzo;
+}//acquista_componenti
+
+int Azienda::num_ordini_possibili(Order ord){
+	vector<Components> comp= ord.getModel().getComponents();
+	int cost_ordine= Components.GetPrezzo(comp.size());
+	int cassa_totale= ord.getCassa();
+	int nOrd= 0;
+	while(cassa_totale > 0){
+		 nOrd++;
+		 cassa_totale-= costo_ordine;
+	}//while
+	return nOrd;
+}//num_acquisti_possibili
+
+vector<Components> Azienda::getComponentsModelByOrder(Order ord){
+	vector<Components> comp= ord.getModel().getComponents();
+	return comp;
+}//getComponentsModelByOrder
+
+void Azienda::sposta_ordini(){
+	for(int i=0; i<ordini_da_fare.size(); i++)
+		if(ordini_da_fare[i].getModel().getBuild())
+			ordini_evasi[i]= ordini_da_fare[i];
+}//sposta_ordini
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void Azienda::sort_ord_in_arrivo() {
 	sort(ordini_da_fare.begin(),ordini_da_fare.end());
 }
