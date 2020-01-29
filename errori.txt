@@ -62,26 +62,6 @@ vector<Components> Azienda::getComponentsModelByOrder(Order ord){
                                                       ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
-Components.cpp:20:8: error: no matching function for call to 'divide'
-                        arr=divide(nome_, 6);
-                            ^~~~~~
-./Components.h:43:13: note: candidate function not viable: requires single argument 's', but 2 arguments were provided
-    string* divide(string s);                                                       //metodo per dividere la stringa letta e caricarla in un array
-            ^
-1 error generated.
-Model.cpp:22:8: error: out-of-line definition of 'Model' does not match any declaration in 'Model'
-Model::Model(string nome_){
-       ^~~~~
-Model.cpp:25:7: error: non-object type 'time_t (time_t *)' (aka 'long (long *)') is not assignable
-        time = stoi(arr[0]);
-        ~~~~ ^
-Model.cpp:27:2: error: use of undeclared identifier 'quantity'
-        quantity = stoi(arr[2]);
-        ^
-Model.cpp:139:9: warning: reference to stack memory associated with parameter 'os' returned [-Wreturn-stack-address]
-        return os;
-               ^~
-1 warning and 3 errors generated.
 Order.cpp:4:9: fatal error: 'Ordine.h' file not found
 #include"Ordine.h"
         ^~~~~~~~~~
