@@ -2,33 +2,36 @@
 //Alberto Cappelletto 1196055
 #include<iostream>
 #include<string>
-#include"Model.h"
+#include<vector>
+#include<fstream>
 
 using namespace std;
 
-class Order{
+class Ordine {
 public:
-	Order();							//costruttore di default
-	Order(int t, int k, int n);					//costruttore di parametri
-	Order(const Order& ord);					//costruttore di copia
-	Order(Order&& ord);						//costruttore di spostamento
-	//ordini(string s);						costruttore per il load del file ordini.dat
-	~Order();							//distruttore
 
-	Order& operator=(const Order& ord);				//operatore = per costruttore di copia
-	Order& operator=(Order&& ord);				//operatore = per costruttore di spostamento
+	Ordine();										//costruttore di default
+	Ordine(int t, int k, int n);					//costruttore di parametri
+	Ordine(const Ordine& ord);						//costruttore di copia
+	Ordine(Ordine&& ord);							//costruttore di spostamento
+	~Ordine();										//distruttore
+	Ordine(string s);
 
-	int getTime() const;						//funzioni get
+	Ordine& operator=(const Ordine& ord);			//overloading operatore = per costruttore di copia
+	Ordine& operator=(Ordine&& ord);				//overloading operatore = per costruttore di spostamento
+	bool operator<(const Ordine& o);				//overloading operatore <
+
+	int getTime() const;									//funzioni get
 	int getId() const;
 	int getQuantity() const;
-	Model getModel() const;
 
 private:
 	int time;
 	int id;
-	int quantity;
-	Model mod;
+	int quantity;							
 
 };
+string* divide(string s);
+ostream& operator<<(ostream os,const Ordine& ord);
 
-ostream& operator<<(ostream os,const Order& ord);			//overload operatore <<
+
