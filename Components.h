@@ -40,6 +40,6 @@ class Components
 };
     ostream& operator<< ( ostream& os , Components& c );                            //overloading operator <<
     vector<Components> load(string NomeFile);                                       //metodo per caricare leggere file .dat
-    string* divide(string s);                                                       //metodo per dividere la stringa letta e caricarla in un array
+    string* divide(string s, int nelem);                                                       //metodo per dividere la stringa letta e caricarla in un array
 
     #endif
