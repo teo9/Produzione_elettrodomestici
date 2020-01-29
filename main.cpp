@@ -13,5 +13,6 @@ int main()
     a.carica_ord();
      cout << "Caricato Ordini" << endl;
 
+    
     return 0;
 }
