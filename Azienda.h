@@ -3,6 +3,9 @@
 #include<string>
 #include<vector>
 #include<fstream>
+#include "Order.h"
+#include "Components.h"
+#include "Model.h"
 
 using namespace std;
 
@@ -31,7 +34,10 @@ public:
 	bool cerca_comp();						//funzione che controlla se ci sono i componenti in magazzino per produrre un elettrodomestico
 	bool ordina_comp();						//funzione che ordina il componente necessario
 	int getComp_info(int k) const;//fatta	//funzione che mi restituisce il numero di riga del vettore di componenti dato l'id
-
+    int acquista_componenti(Ordine ord);
+	void sposta_ordini();
+	int num_ordini_possibili(Ordine ord);
+	vector<Components> getComponentsModelByOrder(Ordine ord);
 	///////////////////////////////////////////////////////////////////////////////////
 	//mancano da dichiarare ancora un paio di funzioni,tipo quella che decide quando///
 	//fermarsi con gli ordini perche la cassa non riesce piu a coprire le spese ecc..//
@@ -47,6 +53,7 @@ private:
 	vector <Model> mod_catalogo;		//vettore che contiene tutte le info sui possibili elettrodomestici che è possibile fare
 	vector<Model> mod_fatti;			//vettore che contiene gli elettrodomestici gia prodotti
 	vector<Ordine> costi_per_prodotto;	//vettore che contiene l id dell elettrodomestico e il costo totale
+	vector<Components> comp_acquistati;
 										//(la somma dei prezzi dei vari componenti che servono per produrlo)
 
 

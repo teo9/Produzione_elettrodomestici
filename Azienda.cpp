@@ -6,6 +6,7 @@
 #include<algorithm>
 #include "Azienda.h"
 
+
 using namespace std;
 
 /////MANCANO ANCORA DELLE FUNZIONI DA IMPLEMENTARE CHE SONO SCRITTE IN AZIENDA.H/////
@@ -46,15 +47,19 @@ void Azienda::get_delivered_orders() {
 }//get_delivered_orders*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int Azienda::acquista_componenti(Order ord){
-	vector<Components> comp_da_acquistare= ord.getModel().getComponents();
-	int prezzo= Components.GetPrezzo(comp_da_acquistare.size()); //prezzo totale per l'acquisto
+int Azienda::acquista_componenti(Ordine ord){
+	//vector<Components> comp_da_acquistare= ord.getModel().getComponents();
+	int prezzo =0;
+	//for(int i =0;i < comp_da_acquistare.size();i++)
+	//	prezzo += comp_da_acquistare[i].GetPrezzo(comp_da_acquistare.size()); //prezzo totale per l'acquisto
 	
 	return prezzo;
 }//acquista_componenti
 
-int Azienda::num_ordini_possibili(Order ord){
+int Azienda::num_ordini_possibili(Ordine ord){
+	/*
 	vector<Components> comp= ord.getModel().getComponents();
+	
 	int cost_ordine= Components.GetPrezzo(comp.size());
 	int cassa_totale= ord.getCassa();
 	int nOrd= 0;
@@ -63,17 +68,20 @@ int Azienda::num_ordini_possibili(Order ord){
 		 cassa_totale-= costo_ordine;
 	}//while
 	return nOrd;
+	*/
+	return 0;
 }//num_acquisti_possibili
 
-vector<Components> Azienda::getComponentsModelByOrder(Order ord){
-	vector<Components> comp= ord.getModel().getComponents();
+vector<Components> Azienda::getComponentsModelByOrder(Ordine ord){
+	vector<Components> comp; //= ord.getModel().getComponents();
 	return comp;
+	
 }//getComponentsModelByOrder
 
 void Azienda::sposta_ordini(){
-	for(int i=0; i<ordini_da_fare.size(); i++)
-		if(ordini_da_fare[i].getModel().getBuild())
-			ordini_evasi[i]= ordini_da_fare[i];
+	//for(int i=0; i<ordini_da_fare.size(); i++)
+	//	if(ordini_da_fare[i].getModel().getBuild())
+	//		ordini_evasi[i]= ordini_da_fare[i];
 }//sposta_ordini
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,6 +144,7 @@ void Azienda::carica_comp() {
 		componenti.close();
 	}
 }
+/*
 void Azienda::carica_modelli() 
 {
 	ifstream modelli("models.dat");
@@ -178,28 +187,29 @@ void Azienda::carica_modelli()
 		}
 	}
 }
-
+*/
 
 /** get_acquired_components() */
-void Azienda::get_acquired_component(){
-    for(int i=0; i<comp_acquistati.size(); i++)
-        Model m= (comp_acquistati)[i].getModel();
-    vector<Components> comp= m.getComponents();
-    for(int j=0; j<comp.size(); j++)
+void Azienda::get_acquired_component()
+{
+ //   for(int i=0; i<comp_acquistati.size(); i++)
+ //       Model m = comp_acquistati[i];
+ //   vector<Components> comp= m.getComponents();
+ //   for(int j=0; j<comp.size(); j++)
         //stampa id, nome, .... std::cout <<
-        }//get_acquired_components
+}//get_acquired_components
 
 /** get_warehouse() */
 void Azienda::get_warehouse(){
     for(int i=0; i<magazzino.size(); i++)
-        Components comp= warehouse[i].getComp();
+        Components comp= magazzino[i];
     //stampa id, nome, ... std::cout <<
 }//get_warehouse
 
 /** get_delivered_orders() */
 void Azienda::get_delivered_orders(){
-    for(int i=0; i<ordini_evasi.size(); i++)
-        Model m= (ordini_evasi)[i];
+   // for(int i=0; i<ordini_evasi.size(); i++)
+    //    Model m= ordini_evasi[i];
     //stampa id, nome, .... std::cout <<
 }//get_delivered_orders
 
