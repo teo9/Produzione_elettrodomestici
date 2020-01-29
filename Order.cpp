@@ -1,7 +1,8 @@
 //Alberto Cappelletto 1196055
 
 #include<iostream>
-#include"Ordine.h"
+#include"Order.h"
+#include "Components.h"
 
 using namespace std;						
 
@@ -60,6 +61,8 @@ Ordine& Ordine::operator=(Ordine&& ord) {
 bool Ordine::operator<(const Ordine& o) {
 	return (time < o.time);
 }
+
+
 //overload operatore <<
 ostream& operator<<(ostream &os,const Ordine &ord) {
 	os << "time= [" << ord.getTime() << "]\n" << "id= [" << ord.getId() << "]\n" << "quantity= [" << ord.getQuantity() << "]\n";
@@ -68,13 +71,15 @@ ostream& operator<<(ostream &os,const Ordine &ord) {
 Ordine::Ordine(string nome_)
 {
 	string* arr = new string[3];
-	arr = divide(nome_);
+	arr = divide(nome_,3);
 
 	time = stoi(arr[0]);
 	id= stoi(arr[1]);
 	quantity = stoi(arr[2]);
 	delete[] arr;
 }
+
+/*
 string* divide(string s)                              //divide le stringhe caricate
 {
 	string a = "";
@@ -94,3 +99,5 @@ string* divide(string s)                              //divide le stringhe caric
 	}
 	return arr;
 }
+
+*/

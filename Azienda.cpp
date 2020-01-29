@@ -86,8 +86,18 @@ void Azienda::sposta_ordini(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void Azienda::sort_ord_in_arrivo() {
-	sort(ordini_da_fare.begin(),ordini_da_fare.end());
+class less_than_key
+{
+	public:
+		inline bool operator() (const Ordine& ob1, const Ordine& ob2)
+		{
+			return (ob1.getTime() < ob2.getTime() );
+		}
+};
+
+
+void Azienda::sort_ord_in_arrivo() {      
+	  sort(ordini_da_fare.begin(),ordini_da_fare.end() , less_than_key() );
 }
 int Azienda::next_mese() {
 	mese++;
@@ -190,14 +200,14 @@ void Azienda::carica_modelli()
 */
 
 /** get_acquired_components() */
-void Azienda::get_acquired_component()
-{
+//void Azienda::get_acquired_component()
+//{
  //   for(int i=0; i<comp_acquistati.size(); i++)
  //       Model m = comp_acquistati[i];
  //   vector<Components> comp= m.getComponents();
  //   for(int j=0; j<comp.size(); j++)
         //stampa id, nome, .... std::cout <<
-}//get_acquired_components
+//}//get_acquired_components
 
 /** get_warehouse() */
 void Azienda::get_warehouse(){

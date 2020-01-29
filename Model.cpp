@@ -21,7 +21,7 @@ Model::Model(int model_id, std::string model_name, std::vector<Components> model
 */
 Model::Model(string nome_){
 	string* arr = new string[2];
-	arr = divide(nome_);
+	arr = divide(nome_,2);
 	id= stoi(arr[0]);
 	name= stoi(arr[1]);
 	delete[] arr;
@@ -141,6 +141,8 @@ ostream& operator<<(ostream& os, const Model& m) {
 /** divide()
  * @param s linea del file da cui leggere i dati
 */
+
+/*
 string* divide(string s){
 	string a = "";
 	int j = 0;
@@ -157,3 +159,4 @@ string* divide(string s){
 	}//for
 	return arr;
 }//divide
+*/

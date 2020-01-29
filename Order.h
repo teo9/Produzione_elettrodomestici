@@ -20,7 +20,7 @@ public:
 	Ordine& operator=(const Ordine& ord);			//overloading operatore = per costruttore di copia
 	Ordine& operator=(Ordine&& ord);				//overloading operatore = per costruttore di spostamento
 	bool operator<(const Ordine& o);				//overloading operatore <
-
+	bool operator>(const Ordine& o);				//overloading operatore <
 	int getTime() const;									//funzioni get
 	int getId() const;
 	int getQuantity() const;
@@ -31,7 +31,7 @@ private:
 	int quantity;							
 
 };
-string* divide(string s);
+//string* divide(string s);
 ostream& operator<<(ostream os,const Ordine& ord);
 
 

@@ -1,68 +1,7 @@
-In file included from Azienda.cpp:7:
-./Azienda.h:42:10: error: use of undeclared identifier 'Ordine'
-        vector <Ordine> ordini_da_fare;         //vettore di ordini che sono ancora da evadere
-                ^
-./Azienda.h:43:10: error: use of undeclared identifier 'Ordine'
-        vector <Ordine> ordini_evasi;           //vettore di ordini che sono gia stati completati
-                ^
-./Azienda.h:44:10: error: use of undeclared identifier 'Components'
-        vector <Components> comp_catalogo;      //vettore che contiene tutti i componenti che è possibile ordinare
-                ^
-./Azienda.h:45:9: error: use of undeclared identifier 'Components'
-        vector<Components>comp_in_arrivo;       //vettore che contiene i componenti ordinati ma non ancora arrivati
-               ^
-./Azienda.h:46:9: error: use of undeclared identifier 'Components'
-        vector<Components> magazzino;           //magazzino che tiene i componenti gia arrivati e non ancora usati per la produzione
-               ^
-./Azienda.h:47:10: error: use of undeclared identifier 'Model'
-        vector <Model> mod_catalogo;            //vettore che contiene tutte le info sui possibili elettrodomestici che è possibile fare
-                ^
-./Azienda.h:48:9: error: use of undeclared identifier 'Model'
-        vector<Model> mod_fatti;                        //vettore che contiene gli elettrodomestici gia prodotti
-               ^
-./Azienda.h:49:9: error: use of undeclared identifier 'Ordine'
-        vector<Ordine> costi_per_prodotto;      //vettore che contiene l id dell elettrodomestico e il costo totale
-               ^
-Azienda.cpp:49:34: error: unknown type name 'Order'
-int Azienda::acquista_componenti(Order ord){
-                                 ^
-Azienda.cpp:50:9: error: use of undeclared identifier 'Components'
-        vector<Components> comp_da_acquistare= ord.getModel().getComponents();
-               ^
-Azienda.cpp:51:14: error: use of undeclared identifier 'Components'
-        int prezzo= Components.GetPrezzo(comp_da_acquistare.size()); //prezzo totale per l'acquisto
-                    ^
-Azienda.cpp:51:35: error: use of undeclared identifier 'comp_da_acquistare'
-        int prezzo= Components.GetPrezzo(comp_da_acquistare.size()); //prezzo totale per l'acquisto
-                                         ^
-Azienda.cpp:56:35: error: unknown type name 'Order'
-int Azienda::num_ordini_possibili(Order ord){
-                                  ^
-Azienda.cpp:57:9: error: use of undeclared identifier 'Components'
-        vector<Components> comp= ord.getModel().getComponents();
-               ^
-Azienda.cpp:58:19: error: use of undeclared identifier 'Components'
-        int cost_ordine= Components.GetPrezzo(comp.size());
-                         ^
-Azienda.cpp:58:40: error: use of undeclared identifier 'comp'
-        int cost_ordine= Components.GetPrezzo(comp.size());
-                                              ^
-Azienda.cpp:63:19: error: use of undeclared identifier 'costo_ordine'; did you mean 'tot_ordini'?
-                 cassa_totale-= costo_ordine;
-                                ^~~~~~~~~~~~
-                                tot_ordini
-./Azienda.h:56:6: note: 'tot_ordini' declared here
-        int tot_ordini;                                         //questo non so se è necessario 
+Model.cpp:24:8: error: no matching function for call to 'divide'
+        arr = divide(nome_);
+              ^~~~~~
+./Components.h:43:13: note: candidate function not viable: requires 2 arguments, but 1 was provided
+    string* divide(string s, int nelem);                                                       //metodo per dividere la stringa letta e caricarla in un array
             ^
-Azienda.cpp:68:8: error: use of undeclared identifier 'Components'
-vector<Components> Azienda::getComponentsModelByOrder(Order ord){
-       ^
-Azienda.cpp:68:55: error: unknown type name 'Order'
-vector<Components> Azienda::getComponentsModelByOrder(Order ord){
-                                                      ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-Order.cpp:4:9: fatal error: 'Ordine.h' file not found
-#include"Ordine.h"
-        ^~~~~~~~~~
 1 error generated.
