@@ -8,11 +8,11 @@
  * @param model_pr prezzo del modello
  * @param model_built indicazione se il modello e` stato costruito
  */
-Model::Model(int model_id, std::string model_name, std::vector<Components> model_components, double model_pr) {
+Model::Model(int model_id, std::string model_name, std::vector<Components> model_components) {
 	id= model_id;
 	name= model_name;
 	components= model_components;
-	price= model_pr;
+	
 	isBuild= false;
 }//Model
 
@@ -20,10 +20,11 @@ Model::Model(int model_id, std::string model_name, std::vector<Components> model
  * @param nome_ nome file del modello
 */
 Model::Model(string nome_){
+	cout << nome_ << endl;
 	string* arr = new string[2];
 	arr = divide(nome_,2);
 	id= stoi(arr[0]);
-	name= stoi(arr[1]);
+	name = arr[1];
 	delete[] arr;
 }//Model
 
@@ -34,7 +35,7 @@ Model::Model(const Model& m) {
 	id= m.id;
 	name= m.name;
 	components= m.components;
-	price= m.price;
+	qta= m.qta;
 	isBuild= m.isBuild;
 }//Model
 
@@ -46,7 +47,7 @@ Model& Model::operator=(const Model& m){
 	components.clear();
 	id= m.id;
 	name= m.name;
-	price= m.price;
+	qta= m.qta;
 	components= m.components;
 	isBuild= m.isBuild;
 	return *this;
@@ -58,12 +59,12 @@ Model& Model::operator=(const Model& m){
 Model::Model(Model&& m){
 	id= m.id;
 	name= m.name;
-	price= m.price;
+	qta= m.qta;
 	isBuild= m.isBuild;
 	components= m.components;
 	m.id= 0;
 	m.name= "";
-	m.price= 0;
+	m.qta= 0;
 	m.components.clear();
 	m.isBuild= false;
 }//Model
@@ -76,12 +77,12 @@ Model& Model::operator=(Model&& m) {
 	components.clear();
 	id= m.id;
 	name= m.name;
-	price= m.price;
+	qta= m.qta;
 	isBuild= m.isBuild;
 	components= m.components;
 	m.id= 0;
 	m.name= "";
-	m.price= 0;
+	m.qta= 0;
 	m.isBuild= false;
 	m.components.clear();
 	return *this;
@@ -91,7 +92,7 @@ Model& Model::operator=(Model&& m) {
 Model::~Model(){
 	id= 0;
 	name= "";
-	price= 0;
+	qta= 0;
 	components.clear();
 	isBuild= false;
 }//~Model
@@ -102,8 +103,8 @@ int Model::getId() const{
 }//getId
 
 /** getPrice() */
-double Model::getPrice() const{
-	return price;
+int Model::getQuantity() const{
+	return qta;
 }//getPrice
 
 /** getName() */
@@ -132,7 +133,7 @@ void Model::setModelBuilt(){
  * @return stampa su video dello stato dell'oggetto
 */
 ostream& operator<<(ostream& os, const Model& m) {
-	os<<"Id: "<<m.getId()<<"Name: "<<m.getName()<<"Price: "<<m.getPrice();
+	os<<"Id: "<<m.getId()<<"Name: "<<m.getName()<<"Qta: "<<m.getQuantity();
 	for(int i=0; i<m.getComponents().size(); i++)
 		os<<"Component"<<i<<": "<<m.getComponents().at(i);
 	return os;

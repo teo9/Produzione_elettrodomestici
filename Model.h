@@ -9,7 +9,7 @@ using std::ostream;
 
 class Model{
 	public:
-		Model(int id, std::string name, std::vector<Components> c, double pr);          				//costruttore di parametri
+		Model(int id, std::string name, std::vector<Components> c);          				//costruttore di parametri
 		Model(const Model& m);
 		Model(string nomeFile);                                        			      					//costruttore di copia
 		Model& operator=(const Model& m);                                             					//operatore assegnamento di copia
@@ -18,7 +18,7 @@ class Model{
 		~Model();																																								//distruttore
 		int getId() const;
 		std::string getName() const;
-		double getPrice() const;
+		int getQuantity() const;
 		std::vector<Components> getComponents() const;
 		bool getBuild() const;
 		void setModelBuilt();
@@ -26,7 +26,7 @@ class Model{
 		int id;
 		std::string name;
 		std::vector<Components> components;
-		double price;
+		int qta;
 		bool isBuild;
 }; //Model
 

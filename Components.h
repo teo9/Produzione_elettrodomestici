@@ -21,9 +21,11 @@ class Components
     string nome;
     int tempo;
     Prezzi p;
+    int qta;
 
     public:
         Components(int id, string nome, int tempo, Prezzi p);
+        
         Components(string nome);
         Components(int id, string nome, int tempo, int a, int b, int c);
         int GetId() const;
@@ -33,7 +35,9 @@ class Components
         Components(const Components& c);                                            //costruttore di copia
         Components& operator =(const Components& c);                                //assegnamento di copia
         Components(Components&& c);                                                 //costruttore di spostamento
-        Components& operator =(Components&& c);                                     //assegnamento di spostamento
+        Components& operator =(Components&& c);       //assegnamento di spostamento
+        int getQuantity() {return qta;}
+        void setQuantity(int q) {qta = q; }                              
 
 
     

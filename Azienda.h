@@ -54,6 +54,7 @@ private:
 	vector<Model> mod_fatti;			//vettore che contiene gli elettrodomestici gia prodotti
 	vector<Ordine> costi_per_prodotto;	//vettore che contiene l id dell elettrodomestico e il costo totale
 	vector<Components> comp_acquistati;
+	Components GetById(int i);
 										//(la somma dei prezzi dei vari componenti che servono per produrlo)
 
 

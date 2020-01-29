@@ -10,12 +10,12 @@ using namespace std;
 class Ordine {
 public:
 
-	Ordine();										//costruttore di default
+	Ordine();		
+	Ordine(string h);								//costruttore di default
 	Ordine(int t, int k, int n);					//costruttore di parametri
 	Ordine(const Ordine& ord);						//costruttore di copia
 	Ordine(Ordine&& ord);							//costruttore di spostamento
 	~Ordine();										//distruttore
-	Ordine(string s);
 
 	Ordine& operator=(const Ordine& ord);			//overloading operatore = per costruttore di copia
 	Ordine& operator=(Ordine&& ord);				//overloading operatore = per costruttore di spostamento

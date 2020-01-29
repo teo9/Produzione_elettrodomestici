@@ -26,6 +26,7 @@ void Azienda::get_acquired_component() {
 			if (ordini_da_fare[i].getId()==mod_catalogo[k].getId()) 
 			{
 			//stampa id, nome, .... std::cout <<
+			   cout << ordini_da_fare[i].getId() << " " << ordini_da_fare[i].getTime();
 			}
 		}
 	}
@@ -116,25 +117,24 @@ int Azienda::getComp_info(int k) const {
 	return -1;
 }
 void Azienda::carica_ord() {
-	ifstream orders("orders.dat");
+	ifstream orders("./dats/orders.dat");
 	if (orders.is_open()) {
-		int c;
+		string c;
 		orders >> c;
-		cassa = c;
+		c= c.substr(1 , c.length() -2);
+		cassa = stoi(c);
 		while (orders.good()) {
-			int time;
-			orders >> time;
-			int id;
-			orders >> id;
-			int quantity;
-			orders >> quantity;
-			ordini_da_fare.push_back(Ordine(time,id,quantity));
+			string h ;
+			orders >> h;
+			Ordine o (h);
+			ordini_da_fare.push_back(o);
 		}
 		orders.close();
+		cout << "Ordini Caricati" << endl;
 	}
 }
 void Azienda::carica_comp() {
-	ifstream componenti("components_info.dat");
+	ifstream componenti("./dats/components_info.dat");
 	if (componenti.is_open()) {
 		while (componenti.good()) {
 			int id;
@@ -154,12 +154,12 @@ void Azienda::carica_comp() {
 		componenti.close();
 	}
 }
-/*
+
 void Azienda::carica_modelli() 
 {
-	ifstream modelli("models.dat");
+	ifstream modelli("./dats/models.dat");
 	vector<string> files;
-	if (modelli.is_open()) 
+	if (modelli.is_open()) //leggo i nomi dei file
 	{
 		string riga;
 		while (getline(modelli,riga)) 
@@ -168,36 +168,55 @@ void Azienda::carica_modelli()
 		}
 		modelli.close();
 	}
+
 	for (int i = 0; i < files.size(); i++) 
 	{
-		ifstream elettrodom(files[i]);
-		if (elettrodom.is_open()) 
+		ifstream elettrodom("./dats/models/"+ files.at(i));
+		if (elettrodom.is_open())   //prima riga id e nome
 		{
-			int id_elettr;
-			elettrodom >> id_elettr;
-			string s;
-			elettrodom >> s;
-			int prezzo;
-			elettrodom >> prezzo;
-			vector<Components> comp;
-			while (elettrodom.good()) 
+			string h;
+			elettrodom >> h;
+			string* arr = divide(h,2);
+		
+			string nome = arr[1];
+			int id = stoi(arr[0]);
+			vector<Components> cc;
+			
+			
+			while (! elettrodom.eof())
 			{
-				int id_comp;
-				elettrodom >> id_comp;
-				string name_comp;
-				elettrodom >> name_comp;
-				int quantity;
-				elettrodom >> quantity;
-				vector<int> tmp= comp_catalogo[getComp_info(id_comp)].GetPrezzi();
-				Components c(id_comp, name_comp, comp_catalogo[getComp_info(id_comp)].GetTempo(), quantity, tmp[0], tmp[1], tmp[2]);
-				comp.push_back(c);
+				int qta=0;
+				elettrodom >> h;
+				string *j = divide(h,3);
+				int _id = stoi(j[0]);
+				qta = stoi(j[2]);
+
+				Components c = GetById(_id);
+				c.setQuantity(qta);
+				cc.push_back(c);
+				delete[] j;
 			}
-			mod_catalogo.push_back(Model(id_elettr, s, comp, prezzo));
+			
+
+
+			mod_catalogo.push_back(Model(id, nome , cc ));
 			elettrodom.close();
+			delete[] arr;
+			
 		}
 	}
 }
-*/
+
+Components Azienda::GetById(int i)
+{
+	for(int h=0;h< comp_catalogo.size();h++)
+	{
+		if(comp_catalogo[h].GetId() == i)
+			return comp_catalogo[h];
+	}
+	Components r( "[1][error][1][0][0][0]");
+	return r;
+}
 
 /** get_acquired_components() */
 //void Azienda::get_acquired_component()
