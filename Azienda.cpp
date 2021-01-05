@@ -187,6 +187,9 @@ void Azienda::carica_modelli()
 			{
 				int qta=0;
 				elettrodom >> h;
+
+
+				
 				string *j = divide(h,3);
 				int _id = stoi(j[0]);
 				qta = stoi(j[2]);
